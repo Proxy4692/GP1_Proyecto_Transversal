@@ -1,26 +1,38 @@
 package universidad.Entidades;
 
-import java.util.HashSet;
-import java.util.Iterator;
+import java.time.LocalDate;
 
 public class Alumno{
-    private int legajo;
+    private int idAlumno;
     private String apellido;
     private String nombre;
-    private HashSet <Materia> listaMaterias = new HashSet();
-    
-    public Alumno(int legajo, String apellido, String nombre){
-        this.legajo = legajo;
+    private LocalDate fechaNac;
+    private boolean activo;
+
+    public Alumno() {
+    }
+
+    public Alumno(int idAlumno, String apellido, String nombre, LocalDate fechaNac, boolean activo) {
+        this.idAlumno = idAlumno;
         this.apellido = apellido;
         this.nombre = nombre;
+        this.fechaNac = fechaNac;
+        this.activo = activo;
     }
 
-    public int getLegajo() {
-        return legajo;
+    public Alumno(String apellido, String nombre, LocalDate fechaNac, boolean activo) {
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.fechaNac = fechaNac;
+        this.activo = activo;
     }
 
-    public void setLegajo(int legajo) {
-        this.legajo = legajo;
+    public int getIdAlumno() {
+        return idAlumno;
+    }
+
+    public void setIdAlumno(int idAlumno) {
+        this.idAlumno = idAlumno;
     }
 
     public String getApellido() {
@@ -38,28 +50,25 @@ public class Alumno{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    public boolean agregarMateria(Materia m){
-        for (Materia materia : listaMaterias) {
-            if(materia.equals(m)){
-                listaMaterias.add(m);
-                return true;
-            }           
-        }
-        return false;      
+
+    public LocalDate getFechaNac() {
+        return fechaNac;
     }
+
+    public void setFechaNac(LocalDate fechaNac) {
+        this.fechaNac = fechaNac;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    } 
 
     @Override
     public String toString(){
         return nombre + " " + apellido;
-    }
-    
-    public int cantidadMaterias(){
-        Iterator it = listaMaterias.iterator();
-        int cantMaterias = 0;
-        while (it.hasNext()) {            
-            cantMaterias += 1;           
-        }
-        return cantMaterias;
     }
 }
