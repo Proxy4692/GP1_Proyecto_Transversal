@@ -25,8 +25,8 @@ public class AlumnoData{
             ps.setInt(1, alumno.getDni());
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
-            ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento())); //localDate a Date
-            ps.setBoolean(5, alumno.isEstado()); // if reducido
+            ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
+            ps.setBoolean(5, alumno.isEstado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if(rs.next()){
