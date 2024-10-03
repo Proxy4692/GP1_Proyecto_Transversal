@@ -11,23 +11,23 @@ public class Inscripcion{
     private int codigoAlu;
     private String sel;
 
-    public Inscripcion(LocalDate fecha, int codigoMat, int codigoAlu) {
+    public Inscripcion(LocalDate fecha, int codigoMat, int codigoAlu){
         this.fecha = fecha;
         this.codigoMat = codigoMat;
         this.codigoAlu = codigoAlu;
     }
 
-    public LocalDate getFecha() {
+    public LocalDate getFecha(){
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(LocalDate fecha){
         this.fecha = fecha;
     }
 
-    public String getMateria() {
+    public String getMateria(){
         sel= "";
-        for (Materia materia : listaMaterias) {
+        for (Materia materia : listaMaterias){
             if(materia.getIdMateria() == codigoMat){
                 sel= materia.getNombre();
             }           
@@ -35,9 +35,9 @@ public class Inscripcion{
         return sel;
     }
 
-    public String getAlumno() {
+    public String getAlumno(){
         sel= "";
-        for (Alumno alumno : listaAlumnos) {
+        for (Alumno alumno : listaAlumnos){
             if(alumno.getLegajo() == codigoAlu){
                 sel= alumno.toString();
             }           
@@ -45,24 +45,24 @@ public class Inscripcion{
         return sel;
     }
 
-    public int getCodigoMat() {
+    public int getCodigoMat(){
         return codigoMat;
     }
 
-    public void setCodigoMat(int codigoMat) {
+    public void setCodigoMat(int codigoMat){
         this.codigoMat = codigoMat;
     }
 
-    public int getCodigoAlu() {
+    public int getCodigoAlu(){
         return codigoAlu;
     }
 
-    public void setCodigoAlu(int codigoAlu) {
+    public void setCodigoAlu(int codigoAlu){
         this.codigoAlu = codigoAlu;
     }
 
     @Override
-    public String toString() {
+    public String toString(){
         return "Inscripcion{" + "fecha=" + fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + ", codigoMat=" + codigoMat + ", codigoAlu=" + codigoAlu + '}';
     }
 }
