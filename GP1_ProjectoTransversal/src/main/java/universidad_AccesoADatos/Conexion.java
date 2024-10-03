@@ -16,8 +16,8 @@ public class Conexion{
     private static Connection connection;
     
     //Constructor Method
-    private Conexion(){
-        public static Connection getConectConnection(){
+    private Conexion(){}
+        public static Connection getConexion(){
             if(connection == null){
                 try{
                     Class.forName("org.mariadb.jdbc.Driver");
@@ -32,4 +32,3 @@ public class Conexion{
             return connection;
         }
     }
-}
