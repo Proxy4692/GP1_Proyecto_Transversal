@@ -1,7 +1,7 @@
 package universidad.Entidades;
 
-import static grp1tp4.Colegio.listaAlumnos;
-import static grp1tp4.Colegio.listaMaterias;
+import static listaAlumnos;
+import static listaMaterias;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
