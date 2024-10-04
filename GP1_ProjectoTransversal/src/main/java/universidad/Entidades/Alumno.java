@@ -1,61 +1,77 @@
 package universidad.Entidades;
 
-public class Inscripcion{
-    public int idInscripcion;
-    public Alumno alumno;
-    public Materia materia;
-    public double nota;
+import java.time.LocalDate;
 
-    public Inscripcion(int idInscripcion, Alumno alumno, Materia materia, double nota) {
-        this.idInscripcion = idInscripcion;
-        this.alumno = alumno;
-        this.materia = materia;
-        this.nota = nota;
+public class Alumno{
+    private int idAlumno;
+    private String apellido;
+    private String nombre;
+    private LocalDate fechaNac;
+    private boolean activo;
+
+    public Alumno() {
     }
 
-    public Inscripcion(Alumno alumno, Materia materia, double nota) {
-        this.alumno = alumno;
-        this.materia = materia;
-        this.nota = nota;
+    public Alumno(int idAlumno, String apellido, String nombre, LocalDate fechaNac, boolean activo) {
+        this.idAlumno = idAlumno;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.fechaNac = fechaNac;
+        this.activo = activo;
     }
 
-    public Inscripcion() {
+    public Alumno(String apellido, String nombre, LocalDate fechaNac, boolean activo) {
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.fechaNac = fechaNac;
+        this.activo = activo;
     }
 
-    public Inscripcion(double nota) {
-        this.nota = nota;
+    public int getIdAlumno() {
+        return idAlumno;
     }
 
-    public int getIdInscripcion() {
-        return idInscripcion;
+    public void setIdAlumno(int idAlumno) {
+        this.idAlumno = idAlumno;
     }
 
-    public void setIdInscripcion(int idInscripcion) {
-        this.idInscripcion = idInscripcion;
+    public String getApellido() {
+        return apellido;
     }
 
-    public Alumno getAlumno() {
-        return alumno;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
+    public String getNombre() {
+        return nombre;
     }
 
-    public Materia getMateria() {
-        return materia;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setMateria(Materia materia) {
-        this.materia = materia;
+    public LocalDate getFechaNac() {
+        return fechaNac;
     }
 
-    public double getNota() {
-        return nota;
+    public void setFechaNac(LocalDate fechaNac) {
+        this.fechaNac = fechaNac;
     }
 
-    public void setNota(double nota) {
-        this.nota = nota;
+    public boolean isActivo() {
+        return activo;
     }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
     
+    
+    @Override
+    public String toString(){
+        return nombre + " " + apellido;
+    }
 }
+    
