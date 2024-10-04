@@ -1,68 +1,61 @@
 package universidad.Entidades;
 
-import static grp1tp4.Colegio.listaAlumnos;
-import static grp1tp4.Colegio.listaMaterias;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 public class Inscripcion{
-    private LocalDate fecha;
-    private int codigoMat;
-    private int codigoAlu;
-    private String sel;
+    public int idInscripcion;
+    public Alumno alumno;
+    public Materia materia;
+    public double nota;
 
-    public Inscripcion(LocalDate fecha, int codigoMat, int codigoAlu){
-        this.fecha = fecha;
-        this.codigoMat = codigoMat;
-        this.codigoAlu = codigoAlu;
+    public Inscripcion(int idInscripcion, Alumno alumno, Materia materia, double nota) {
+        this.idInscripcion = idInscripcion;
+        this.alumno = alumno;
+        this.materia = materia;
+        this.nota = nota;
     }
 
-    public LocalDate getFecha(){
-        return fecha;
+    public Inscripcion(Alumno alumno, Materia materia, double nota) {
+        this.alumno = alumno;
+        this.materia = materia;
+        this.nota = nota;
     }
 
-    public void setFecha(LocalDate fecha){
-        this.fecha = fecha;
+    public Inscripcion() {
     }
 
-    public String getMateria(){
-        sel= "";
-        for (Materia materia : listaMaterias){
-            if(materia.getIdMateria() == codigoMat){
-                sel= materia.getNombre();
-            }           
-        }
-        return sel;
+    public Inscripcion(double nota) {
+        this.nota = nota;
     }
 
-    public String getAlumno(){
-        sel= "";
-        for (Alumno alumno : listaAlumnos){
-            if(alumno.getLegajo() == codigoAlu){
-                sel= alumno.toString();
-            }           
-        }
-        return sel;
+    public int getIdInscripcion() {
+        return idInscripcion;
     }
 
-    public int getCodigoMat(){
-        return codigoMat;
+    public void setIdInscripcion(int idInscripcion) {
+        this.idInscripcion = idInscripcion;
     }
 
-    public void setCodigoMat(int codigoMat){
-        this.codigoMat = codigoMat;
+    public Alumno getAlumno() {
+        return alumno;
     }
 
-    public int getCodigoAlu(){
-        return codigoAlu;
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
     }
 
-    public void setCodigoAlu(int codigoAlu){
-        this.codigoAlu = codigoAlu;
+    public Materia getMateria() {
+        return materia;
     }
 
-    @Override
-    public String toString(){
-        return "Inscripcion{" + "fecha=" + fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + ", codigoMat=" + codigoMat + ", codigoAlu=" + codigoAlu + '}';
+    public void setMateria(Materia materia) {
+        this.materia = materia;
     }
+
+    public double getNota() {
+        return nota;
+    }
+
+    public void setNota(double nota) {
+        this.nota = nota;
+    }
+    
 }
