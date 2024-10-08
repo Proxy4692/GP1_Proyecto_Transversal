@@ -14,26 +14,19 @@ public class Conexion{
     private static Connection connection;
     
     //Constructor Method
-    private Conexion () {}
+    private Conexion(){}
         public static Connection getConexion(){
-            if(connection ==null){
+            if(connection == null){
                 try{
-                   Class.forName("org.mariadb.jdbc.Driver");
+                    Class.forName("org.mariadb.jdbc.Driver");
+                    //Setup the connection with the DB
                     connection = DriverManager.getConnection(URL+DB, USUARIO,PASSWORD);
-                             JOptionPane.showMessageDialog(null,"Conectado");
-
-                    
-                    } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null,"Error al cargar los driver");
-            
-            
-        } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, "Error al cargar la Base de Datos");
-        }
-        }
-    
-        return connection;
-        }
-                
+                }catch(SQLException ex){
+                    JOptionPane.showMessageDialog(null, "Error al conectarse a la BD " + ex.getMessage());
+                }catch(ClassNotFoundException ex){
+                    JOptionPane.showMessageDialog(null, "Error al cargar los Drivers " + ex.getMessage());
+                }
+            }
+            return connection;
         }
     }
