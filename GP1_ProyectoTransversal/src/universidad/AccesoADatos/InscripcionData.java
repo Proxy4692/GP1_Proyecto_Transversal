@@ -23,10 +23,20 @@ public class InscripcionData {
         ps.setInt(1, insc.getAlumno().getIdAlumno());
         ps.setInt(2, insc.getMateria().getIdMateria());
         ps.setDouble(3, insc.getNota());
-        
+        ps.executeUpdate();
+        ResultSet rs = ps.getGeneratedKeys();
+        if(rs.next){
+            insc.setIdInscripcion(rs.getInt(1));
+            JOptionPane.showMessageDialog(null, "Inscripcion Registrada");
+        }
+        ps.close();
         
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion");
         }
+    }
+    
+    public void actualizarNota(int idAlumno, int idMateria, double nota){
+        
     }
 }
