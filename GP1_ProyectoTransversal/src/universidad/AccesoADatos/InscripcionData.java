@@ -56,6 +56,13 @@ public class InscripcionData {
         try{
             String sql = "DELETE FROM inscripcion WHERE idAlumno = ? and idMateria = ?";
             PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idAlumno);
+            ps.setInt(2, idMateria);
+            int filas = ps.executeUpdate();
+            if(filas > 0){
+                JOptionPane.showMessageDialog(null, "Inscripcion Borrada");
+            }
+            ps.close();
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion");
         }
