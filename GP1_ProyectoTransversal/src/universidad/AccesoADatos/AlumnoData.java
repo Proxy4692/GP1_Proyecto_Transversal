@@ -46,7 +46,6 @@ public class AlumnoData{
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-
             if(rs.next()){
                 alumno = new Alumno();
                 alumno.setIdAlumno(id);
@@ -62,7 +61,6 @@ public class AlumnoData{
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno " + ex.getMessage());
         }
-
         return alumno;
     }
 
@@ -74,7 +72,6 @@ public class AlumnoData{
             ps = con.prepareStatement(sql);
             ps.setInt(1, dni);
             ResultSet rs = ps.executeQuery();
-
             if (rs.next()) {
                 alumno = new Alumno();
                 alumno.setIdAlumno(rs.getInt("idAlumno"));
@@ -90,7 +87,6 @@ public class AlumnoData{
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno " + ex.getMessage());
         }
-
         return alumno;
     }
 
@@ -128,7 +124,6 @@ public class AlumnoData{
             ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
             ps.setInt(5, alumno.getIdAlumno());
             int exito = ps.executeUpdate();
-
             if (exito == 1){
                 JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
             }else{
@@ -145,7 +140,6 @@ public class AlumnoData{
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             int fila = ps.executeUpdate();
-
             if(fila == 1){
                 JOptionPane.showMessageDialog(null, " Se eliminó el alumno.");
             }

@@ -12,7 +12,7 @@ import universidad.Entidades.Alumno;
 import universidad.Entidades.Inscripcion;
 import universidad.Entidades.Materia;
 
-public class InscripcionData {
+public class InscripcionData{
     private Connection con = null;
     private MateriaData md = new MateriaData();
     private AlumnoData ad = new AlumnoData();
@@ -30,7 +30,7 @@ public class InscripcionData {
         ps.setDouble(3, insc.getNota());
         ps.executeUpdate();
         ResultSet rs = ps.getGeneratedKeys();
-        if(rs.next){
+        if(rs.next()){
             insc.setIdInscripcion(rs.getInt(1));
             JOptionPane.showMessageDialog(null, "Inscripcion Registrada");
         }
@@ -125,7 +125,7 @@ public class InscripcionData {
         String sql = "SELECT inscripcion.idMateria, nombre, año FROM inscripcion,"
                 + " materia WHERE inscripcion.idMateria = materia.idMateria"
                 + "AND inscripcion.idAlumno = ?;";
-        try {
+        try{
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idAlumno);
             ResultSet rs = ps.executeQuery();
@@ -137,7 +137,7 @@ public class InscripcionData {
                 materia.add(materia);
             }
             ps.close();
-        } catch (SQLException ex) {
+        }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion");
         }
         return materias;
@@ -176,8 +176,8 @@ public class InscripcionData {
             while(rs.next()){
                 Alumno alumno = new Alumno();
                 alumno.setIdAlumno(rs.getInt("idAlumno"));
-                alumno.setApellido(rs.getInt("apellido"));
-                alumno.setNombre(rs.getInt("nombre"));
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(rs.getBoolean("estado"));
                 alumnosMateria.add(alumno);
