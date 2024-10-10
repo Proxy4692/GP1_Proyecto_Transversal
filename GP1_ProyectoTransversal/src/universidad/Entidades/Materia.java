@@ -62,4 +62,8 @@ public class Materia {
     public String toString() {
         return  nombre + " (Año: " + anioMateria+ ")";
     }
+
+    public void add(Materia materia) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
