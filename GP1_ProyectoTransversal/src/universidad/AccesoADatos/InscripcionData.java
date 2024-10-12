@@ -188,4 +188,6 @@ public class InscripcionData{
         }
         return alumnosMateria;
     }
+    
+   
 }
