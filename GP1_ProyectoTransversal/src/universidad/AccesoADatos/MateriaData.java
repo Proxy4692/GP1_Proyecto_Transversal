@@ -27,11 +27,11 @@ public class MateriaData{
                 ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
-                if (rs.next()) {
+                if(rs.next()){
                     materia.setIdMateria(rs.getInt(1));
             }
                 ps.close();
-            } catch (SQLException ex) {
+            }catch(SQLException ex){
                 System.out.println("Error al guardar la materia: " + ex.getMessage());
         }
     }
@@ -43,7 +43,7 @@ public class MateriaData{
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            if(rs.next()){
                 materia = new Materia();
                 materia.setIdMateria (rs.getInt("idMateria"));
                 materia.setNombre (rs.getString("nombre"));
@@ -91,7 +91,7 @@ public class MateriaData{
         try{
                 PreparedStatement ps = con.prepareStatement (sql);
                 ResultSet rs = ps.executeQuery ();
-            while (rs.next()) {
+            while(rs.next()){
                 Materia materia = new Materia();
                 materia.setIdMateria (rs.getInt ("idMateria"));
                 materia.setNombre (rs.getString ("nombre"));
@@ -105,6 +105,4 @@ public class MateriaData{
         }
         return materias;
     }
-    
- 
 }
