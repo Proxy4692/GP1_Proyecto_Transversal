@@ -6,14 +6,14 @@ import java.awt.Image;
 import java.sql.Connection;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import universidad.AccesoADatos.Conexion_old;
+import universidad.AccesoADatos.Conexion;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 
 
     public MenuPrincipal() {
         initComponents();
-        Connection con=Conexion_old.getConexion();
+        Connection con=Conexion.getConexion();
         this.setLocationRelativeTo(null);
         this.setSize(500, 520);
     }
