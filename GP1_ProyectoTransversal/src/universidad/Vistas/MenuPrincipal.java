@@ -259,7 +259,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        FormularioAlumnos fi=new FormularioAlumnos();
+        FormularioMaterias fi=new FormularioMaterias();
         fi.setVisible(true);
         escritorio.add(fi);
         escritorio.moveToFront(fi);

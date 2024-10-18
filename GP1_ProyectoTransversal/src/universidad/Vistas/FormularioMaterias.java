@@ -5,15 +5,15 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import universidad.AccesoADatos.AlumnoData;
-import universidad.Entidades.Alumno;
+import universidad.AccesoADatos.MateriaData;
+import universidad.Entidades.Materia;
 
-public class FormularioAlumnos extends javax.swing.JInternalFrame {
+public class FormularioMaterias extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo= new DefaultTableModel();
-    private AlumnoData aluData=new AlumnoData(); //Paso 1: Inicializo alumno data y un actual inicializada con el boton Buscar
-    private Alumno alumnoActual=null;
+    private MateriaData matData=new MateriaData(); //Paso 1: Inicializo alumno data y un actual inicializada con el boton Buscar
+    private Materia materiaActual=null;
     
-    public FormularioAlumnos() {
+    public FormularioMaterias() {
         initComponents();
         armarCabecera(); 
         cargarDatos();            
@@ -25,20 +25,17 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
 
         jLRotulo = new javax.swing.JLabel();
         jPDatos = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jtLegajo = new javax.swing.JTextField();
-        jtApellido = new javax.swing.JTextField();
+        jtIdMateria = new javax.swing.JTextField();
         jtNombre = new javax.swing.JTextField();
-        jtDocumento = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jtFechaNacimiento = new javax.swing.JTextField();
+        jtAnioMateria = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jdFechaNac = new com.toedter.calendar.JDateChooser();
         jrEstado = new javax.swing.JRadioButton();
+        jtBuscar = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         jSTabla = new javax.swing.JScrollPane();
-        jtAlumnos = new javax.swing.JTable();
+        jtMaterias = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         jbGuardar = new javax.swing.JButton();
         jbNuevo = new javax.swing.JButton();
@@ -53,23 +50,17 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
         jLRotulo.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
         jLRotulo.setForeground(new java.awt.Color(0, 153, 153));
         jLRotulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLRotulo.setText("Formulario Alumnos");
+        jLRotulo.setText("Formulario Materias");
         jLRotulo.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jPDatos.setBackground(new java.awt.Color(0, 47, 78));
+        jPDatos.setBackground(new java.awt.Color(102, 0, 0));
         jPDatos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel3.setBackground(new java.awt.Color(255, 51, 102));
-        jLabel3.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Apellido:");
 
         jLabel2.setBackground(new java.awt.Color(255, 51, 102));
         jLabel2.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Legajo:");
+        jLabel2.setText("ID:");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jLabel4.setBackground(new java.awt.Color(255, 51, 102));
@@ -78,27 +69,19 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Nombre:");
 
-        jtLegajo.setBackground(new java.awt.Color(255, 255, 255));
-        jtLegajo.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
-        jtLegajo.setForeground(new java.awt.Color(0, 0, 0));
-        jtLegajo.setToolTipText("Codigo de registro ID autogenerado");
-        jtLegajo.setEnabled(false);
-        jtLegajo.setMinimumSize(new java.awt.Dimension(25, 25));
-        jtLegajo.setName(""); // NOI18N
-        jtLegajo.setPreferredSize(new java.awt.Dimension(25, 25));
-        jtLegajo.addActionListener(new java.awt.event.ActionListener() {
+        jtIdMateria.setBackground(new java.awt.Color(255, 255, 255));
+        jtIdMateria.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
+        jtIdMateria.setForeground(new java.awt.Color(0, 0, 0));
+        jtIdMateria.setToolTipText("Codigo de registro ID autogenerado");
+        jtIdMateria.setEnabled(false);
+        jtIdMateria.setMinimumSize(new java.awt.Dimension(25, 25));
+        jtIdMateria.setName(""); // NOI18N
+        jtIdMateria.setPreferredSize(new java.awt.Dimension(25, 25));
+        jtIdMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtLegajoActionPerformed(evt);
+                jtIdMateriaActionPerformed(evt);
             }
         });
-
-        jtApellido.setBackground(new java.awt.Color(255, 204, 255));
-        jtApellido.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
-        jtApellido.setForeground(new java.awt.Color(102, 0, 204));
-        jtApellido.setToolTipText("Ingrese apellido del alumno");
-        jtApellido.setMinimumSize(new java.awt.Dimension(25, 25));
-        jtApellido.setName(""); // NOI18N
-        jtApellido.setPreferredSize(new java.awt.Dimension(25, 25));
 
         jtNombre.setBackground(new java.awt.Color(255, 204, 255));
         jtNombre.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
@@ -113,40 +96,16 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        jtDocumento.setBackground(new java.awt.Color(255, 255, 102));
-        jtDocumento.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
-        jtDocumento.setForeground(new java.awt.Color(102, 0, 204));
-        jtDocumento.setToolTipText("Ingrese DNI del alumno");
-        jtDocumento.setMinimumSize(new java.awt.Dimension(25, 25));
-        jtDocumento.setName(""); // NOI18N
-        jtDocumento.setPreferredSize(new java.awt.Dimension(25, 25));
-        jtDocumento.addActionListener(new java.awt.event.ActionListener() {
+        jtAnioMateria.setBackground(new java.awt.Color(255, 204, 255));
+        jtAnioMateria.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
+        jtAnioMateria.setForeground(new java.awt.Color(102, 0, 204));
+        jtAnioMateria.setToolTipText("Ingrese su nombre");
+        jtAnioMateria.setMinimumSize(new java.awt.Dimension(25, 25));
+        jtAnioMateria.setName(""); // NOI18N
+        jtAnioMateria.setPreferredSize(new java.awt.Dimension(25, 25));
+        jtAnioMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtDocumentoActionPerformed(evt);
-            }
-        });
-        jtDocumento.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jtDocumentoKeyPressed(evt);
-            }
-        });
-
-        jLabel5.setBackground(new java.awt.Color(255, 51, 102));
-        jLabel5.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("DNI:");
-
-        jtFechaNacimiento.setBackground(new java.awt.Color(255, 204, 255));
-        jtFechaNacimiento.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
-        jtFechaNacimiento.setForeground(new java.awt.Color(102, 0, 204));
-        jtFechaNacimiento.setToolTipText("Ingrese su nombre");
-        jtFechaNacimiento.setMinimumSize(new java.awt.Dimension(25, 25));
-        jtFechaNacimiento.setName(""); // NOI18N
-        jtFechaNacimiento.setPreferredSize(new java.awt.Dimension(25, 25));
-        jtFechaNacimiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtFechaNacimientoActionPerformed(evt);
+                jtAnioMateriaActionPerformed(evt);
             }
         });
 
@@ -154,52 +113,62 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Dubai", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("Fecha de nac :");
-
-        jdFechaNac.setBackground(new java.awt.Color(0, 47, 78));
-        jdFechaNac.setToolTipText("");
-        jdFechaNac.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jdFechaNacPropertyChange(evt);
-            }
-        });
+        jLabel6.setText("Año:");
 
         jrEstado.setBackground(new java.awt.Color(102, 0, 153));
         jrEstado.setForeground(new java.awt.Color(255, 255, 255));
         jrEstado.setText("activo");
         jrEstado.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
+        jtBuscar.setBackground(new java.awt.Color(255, 255, 102));
+        jtBuscar.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
+        jtBuscar.setForeground(new java.awt.Color(102, 0, 204));
+        jtBuscar.setToolTipText("Ingrese DNI del alumno");
+        jtBuscar.setMinimumSize(new java.awt.Dimension(25, 25));
+        jtBuscar.setName(""); // NOI18N
+        jtBuscar.setPreferredSize(new java.awt.Dimension(25, 25));
+        jtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtBuscarActionPerformed(evt);
+            }
+        });
+        jtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtBuscarKeyPressed(evt);
+            }
+        });
+
+        jLabel7.setBackground(new java.awt.Color(255, 51, 102));
+        jLabel7.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("Buscar ID:");
+        jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
         javax.swing.GroupLayout jPDatosLayout = new javax.swing.GroupLayout(jPDatos);
         jPDatos.setLayout(jPDatosLayout);
         jPDatosLayout.setHorizontalGroup(
             jPDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPDatosLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(jPDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPDatosLayout.createSequentialGroup()
-                        .addGroup(jPDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPDatosLayout.createSequentialGroup()
-                                .addComponent(jtLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5)
-                                .addGap(3, 3, 3)
-                                .addComponent(jtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jtIdMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPDatosLayout.createSequentialGroup()
-                        .addGroup(jPDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPDatosLayout.createSequentialGroup()
-                                .addComponent(jtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jdFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtAnioMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jrEstado)))))
                 .addContainerGap())
@@ -210,31 +179,27 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jtLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtIdMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jrEstado)
-                    .addComponent(jdFechaNac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(25, 25, 25))
+                    .addComponent(jtAnioMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jrEstado))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jSTabla.setBackground(new java.awt.Color(0, 47, 78));
 
-        jtAlumnos.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
-        jtAlumnos.setForeground(new java.awt.Color(0, 153, 153));
-        jtAlumnos.setModel(new javax.swing.table.DefaultTableModel(
+        jtMaterias.setBackground(new java.awt.Color(102, 0, 0));
+        jtMaterias.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
+        jtMaterias.setForeground(new java.awt.Color(0, 153, 153));
+        jtMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -245,24 +210,24 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jtAlumnos.setToolTipText("Listado de Alumnos");
-        jtAlumnos.setFillsViewportHeight(true);
-        jtAlumnos.setGridColor(new java.awt.Color(0, 47, 78));
-        jtAlumnos.setSelectionForeground(new java.awt.Color(204, 0, 153));
-        jtAlumnos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jtAlumnos.addFocusListener(new java.awt.event.FocusAdapter() {
+        jtMaterias.setToolTipText("Listado de Alumnos");
+        jtMaterias.setFillsViewportHeight(true);
+        jtMaterias.setGridColor(new java.awt.Color(102, 0, 0));
+        jtMaterias.setSelectionForeground(new java.awt.Color(204, 0, 153));
+        jtMaterias.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jtMaterias.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jtAlumnosFocusGained(evt);
+                jtMateriasFocusGained(evt);
             }
         });
-        jtAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtMaterias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtAlumnosMouseClicked(evt);
+                jtMateriasMouseClicked(evt);
             }
         });
-        jSTabla.setViewportView(jtAlumnos);
+        jSTabla.setViewportView(jtMaterias);
 
-        jbGuardar.setBackground(new java.awt.Color(0, 47, 78));
+        jbGuardar.setBackground(new java.awt.Color(102, 0, 0));
         jbGuardar.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
         jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/recursos/guardar30.gif"))); // NOI18N
         jbGuardar.setToolTipText("Guardar");
@@ -277,7 +242,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        jbNuevo.setBackground(new java.awt.Color(0, 47, 78));
+        jbNuevo.setBackground(new java.awt.Color(102, 0, 0));
         jbNuevo.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
         jbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/recursos/nuevo30.gif"))); // NOI18N
         jbNuevo.setToolTipText("Nuevo");
@@ -292,7 +257,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        jbSalir.setBackground(new java.awt.Color(0, 47, 78));
+        jbSalir.setBackground(new java.awt.Color(102, 0, 0));
         jbSalir.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
         jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/recursos/salida30.gif"))); // NOI18N
         jbSalir.setToolTipText("Salir");
@@ -307,7 +272,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        jbEliminar.setBackground(new java.awt.Color(0, 47, 78));
+        jbEliminar.setBackground(new java.awt.Color(102, 0, 0));
         jbEliminar.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
         jbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/recursos/eliminar30.gif"))); // NOI18N
         jbEliminar.setToolTipText("Eliminar");
@@ -354,7 +319,6 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1)
-                    .addComponent(jSTabla, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -363,10 +327,14 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
                         .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61)
                         .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jPDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jSTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -376,11 +344,11 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
                 .addComponent(jLRotulo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
                 .addComponent(jSTabla, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,46 +366,27 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
 
         try{
             //Paso 4: Rescato los valores 
-            if(jtDocumento.getText().isEmpty()){
-                JOptionPane.showMessageDialog(this,"Complete DNI del alumno para poder guardar");
+            int anioMateria= Integer.parseInt(jtAnioMateria.getText());
+            if(jtNombre.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this,"Complete nombre de materia para poder guardar");
                 return;
             }
-            int dni= Integer.parseInt(jtDocumento.getText());
-            if(jtApellido.getText().isEmpty()||jtNombre.getText().isEmpty()){
-                JOptionPane.showMessageDialog(this,"Complete nombre y apellido del alumno para poder guardar");
-                return;
-            }
-            String apellido= jtApellido.getText();
             String nombre= jtNombre.getText();
-            if(jtFechaNacimiento.getText().isEmpty()){
-                JOptionPane.showMessageDialog(this,"Seleccione fecha de nacimiento del alumno para poder guardar");
-                return;
-            }
-            java.util.Date sfecha=jdFechaNac.getDate();
-            LocalDate fechaNac=sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             Boolean estado=jrEstado.isSelected();
             
             //Paso 5 : Corroboro si es alumno nuevo o modificar alumno
-            if(alumnoActual==null){
-                alumnoActual=new Alumno(dni, apellido, nombre, fechaNac, estado);
-                Alumno alumnoBuscar=aluData.buscarAlumnoPorDni(dni);
-                if(alumnoBuscar.getDni()==dni){
-                    JOptionPane.showMessageDialog(this,"El DNI ingresado pertenece a otro alumno guardado anteriormente");
-                    alumnoActual=null;
-                    return;
-                }
-                aluData.guardarAlumno(alumnoActual);
+            if(materiaActual==null){
+                materiaActual=new Materia(nombre, anioMateria, estado);
+                matData.guardarMateria(materiaActual);
             }else{
-                
-                alumnoActual.setDni(dni);
-                alumnoActual.setApellido(apellido);
-                alumnoActual.setNombre(nombre);
-                alumnoActual.setFechaNacimiento(fechaNac);
-                aluData.modificarAlumno(alumnoActual);
+                materiaActual.setEstado(estado);                
+                materiaActual.setNombre(nombre);
+                materiaActual.setAnioMateria(anioMateria);
+                matData.modificarMateria(materiaActual);
             }
             cargarDatos();
         }catch(NumberFormatException nf){
-            JOptionPane.showMessageDialog(this,"El DNI debe ser un número entero");
+            JOptionPane.showMessageDialog(this,"El año de la materia debe ser un número entero");
         }
 
     }//GEN-LAST:event_jbGuardarActionPerformed
@@ -445,20 +394,20 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
 
         limpiarCampos(); // Paso 3
-        alumnoActual=null;
-        jtAlumnos.enable(true);
+        materiaActual=null;
+        jtMaterias.enable(true);
         
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         // TODO add your handling code here:
-        jtAlumnos.enable(true);
+        jtMaterias.enable(true);
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
-    private void jtLegajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtLegajoActionPerformed
+    private void jtIdMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtIdMateriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtLegajoActionPerformed
+    }//GEN-LAST:event_jtIdMateriaActionPerformed
 
     private void jtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreActionPerformed
         // TODO add your handling code here:
@@ -466,144 +415,112 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // Paso 6: 
-        if(alumnoActual!=null){
-            aluData.eliminarAlumno(alumnoActual.getIdAlumno());
-            alumnoActual=null;
+        if(materiaActual!=null){
+            matData.eliminarMateria(materiaActual.getIdMateria());
+            materiaActual=null;
             limpiarCampos();
             cargarDatos();
         }else{
-            JOptionPane.showMessageDialog(this,"No hay un alumno seleccionado para eliminar");            
+            JOptionPane.showMessageDialog(this,"No hay una materia seleccionada para eliminar");            
         }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
-    private void jtDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDocumentoActionPerformed
+    private void jtAnioMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtAnioMateriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtDocumentoActionPerformed
-
-    private void jtFechaNacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtFechaNacimientoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtFechaNacimientoActionPerformed
+    }//GEN-LAST:event_jtAnioMateriaActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
     try{
-        Integer dni= Integer.parseInt(jtDocumento.getText());  //Paso 2: Inicializo alumno actual con DNI seleccionado
-        alumnoActual=aluData.buscarAlumnoPorDni(dni);
-        if(alumnoActual!=null){
-            jtApellido.setText(alumnoActual.getApellido());
-            jtNombre.setText(alumnoActual.getNombre());
-            jrEstado.setSelected(alumnoActual.isEstado());
-            jtLegajo.setText(""+alumnoActual.getIdAlumno());
-            LocalDate lc= alumnoActual.getFechaNacimiento();
-            java.util.Date date= java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            jdFechaNac.setDate(date);
+        Integer idb= Integer.parseInt(jtBuscar.getText());  //Paso 2: Inicializo alumno actual con ID seleccionado
+        materiaActual=matData.buscarMateria(idb);
+        if(materiaActual!=null){
+            jtNombre.setText(materiaActual.getNombre());
+            jrEstado.setSelected(materiaActual.isEstado());
+            jtIdMateria.setText(""+materiaActual.getIdMateria());
+            jtAnioMateria.setText(""+materiaActual.getAnioMateria());
         }else{
-            JOptionPane.showMessageDialog(this,"El alumno que busca no existe");
-            jtDocumento.requestFocus();
-        }        
-        jtAlumnos.enable(true);
+            JOptionPane.showMessageDialog(this,"La materia que busca no existe");
+            jtBuscar.requestFocus();
+        }
+        jtMaterias.enable(true);
     }catch(NumberFormatException ex){
-        JOptionPane.showMessageDialog(this,"Debe ingresar un DNI válido");
-        jtDocumento.requestFocus();
+        JOptionPane.showMessageDialog(this,"Debe ingresar un ID de materia válido");
+        jtBuscar.requestFocus();
     }
         
     }//GEN-LAST:event_jbBuscarActionPerformed
 
-    private void jdFechaNacPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdFechaNacPropertyChange
+    private void jtMateriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtMateriasMouseClicked
 
-        if(evt.getPropertyName().equals("date")){
-            if(jdFechaNac.getDate()!=null){
-                java.util.Date fechaVieja= jdFechaNac.getDate();
-                long tiempo= fechaVieja.getTime();
-                java.sql.Date fecha= new java.sql.Date(tiempo);
-                LocalDate fechaNueva= fecha.toLocalDate();
-                DateTimeFormatter dtf=DateTimeFormatter.ofPattern("dd/MMM/yyyy");
-                jtFechaNacimiento.setText(fechaNueva.format(dtf));                                  
-            }else{
-                JOptionPane.showMessageDialog(this,"Debe ingresar una fecha valida");
-                jdFechaNac.requestFocus(); 
-            }        
-        }
-    }
-        
-    private void limpiarCampos(){
-    /* Paso 3: Vacía los campos para iniciar el llenado de datos*/    
-        jtLegajo.setText("");
-        jtNombre.setText("");
-        jtApellido.setText("");
-        jtDocumento.setText("");
-        jtFechaNacimiento.setText("");
-        jrEstado.setSelected(false);
-    }//GEN-LAST:event_jdFechaNacPropertyChange
-
-    private void jtAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtAlumnosMouseClicked
-
-        int filaElegida=jtAlumnos.getSelectedRow();
+        int filaElegida=jtMaterias.getSelectedRow();
         if(filaElegida!=-1){
-            Integer dni= (Integer)jtAlumnos.getValueAt(filaElegida, 3);  
-            alumnoActual=aluData.buscarAlumnoPorDni(dni);
-            if(alumnoActual!=null){
-                jtDocumento.setText("");
-                jtApellido.setText(alumnoActual.getApellido());
-                jtNombre.setText(alumnoActual.getNombre());
-                jrEstado.setSelected(alumnoActual.isEstado());
-                jtLegajo.setText(""+alumnoActual.getIdAlumno());
-                jtDocumento.setText(""+alumnoActual.getDni());
-                LocalDate lc= alumnoActual.getFechaNacimiento();
-                java.util.Date date= java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
-                jdFechaNac.setDate(date);                  
-//            jbActualizar.setEnabled(true);
-//            jbEliminar.setEnabled(true);            
-
+            Integer idb= (Integer)jtMaterias.getValueAt(filaElegida, 0);  
+            materiaActual=matData.buscarMateria(idb);
+            if(materiaActual!=null){
+                jtBuscar.setText("");
+                jtNombre.setText(materiaActual.getNombre());
+                jrEstado.setSelected(materiaActual.isEstado());
+                jtIdMateria.setText(""+materiaActual.getIdMateria());
+                jtAnioMateria.setText(""+materiaActual.getAnioMateria());
             }
         }
-    }//GEN-LAST:event_jtAlumnosMouseClicked
+    }//GEN-LAST:event_jtMateriasMouseClicked
 
-    private void jtAlumnosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtAlumnosFocusGained
+    private void jtMateriasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtMateriasFocusGained
         // TODO add your handling code here:
         jbBuscar.requestFocus();
-        jtAlumnos.enable(false);
-    }//GEN-LAST:event_jtAlumnosFocusGained
+        jtMaterias.enable(false);
+    }//GEN-LAST:event_jtMateriasFocusGained
 
     private void jbBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jbBuscarFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_jbBuscarFocusGained
 
-    private void jtDocumentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDocumentoKeyPressed
+    private void jtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtBuscarActionPerformed
         // TODO add your handling code here:
-        jtLegajo.setText("");
+    }//GEN-LAST:event_jtBuscarActionPerformed
+
+    private void jtBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBuscarKeyPressed
+        // TODO add your handling code here:
+        jtIdMateria.setText("");
         jtNombre.setText("");
-        jtApellido.setText("");
-        jtFechaNacimiento.setText("");
+        jtAnioMateria.setText("");
         jrEstado.setSelected(false);
-    }//GEN-LAST:event_jtDocumentoKeyPressed
+    }//GEN-LAST:event_jtBuscarKeyPressed
     
     private void armarCabecera(){     
-        modelo.addColumn("Legajo");
-        modelo.addColumn("Apellido");
+        modelo.addColumn("Id Materia");
         modelo.addColumn("Nombre");
-        modelo.addColumn("DNI");
-        modelo.addColumn("Fecha de nac");
-        jtAlumnos.setModel(modelo);
+        modelo.addColumn("Año cursada");
+        modelo.addColumn("estado");
+        jtMaterias.setModel(modelo);
     }
 
     private void cargarDatos(){
-        int filas=jtAlumnos.getRowCount()-1;
+        int filas=jtMaterias.getRowCount()-1;
         for(int f=filas;f>=0;f--){
             modelo.removeRow(f);
         }
-        for (Alumno alumno : aluData.listarAlumnos()) {
-            modelo.addRow(new Object[]{alumno.getIdAlumno(), alumno.getApellido(), alumno.getNombre(),alumno.getDni(),alumno.getFechaNacimiento()});          
+        for (Materia materia : matData.listarMaterias()) {
+            modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(),materia.getAnioMateria(),materia.isEstado()});          
         }
-        jtAlumnos.enable(true);
+        jtMaterias.enable(true);
     }
 
+    private void limpiarCampos(){
+    /* Paso 3: Vacía los campos para iniciar el llenado de datos*/    
+        jtIdMateria.setText("");
+        jtNombre.setText("");
+        jtAnioMateria.setText("");
+        jtBuscar.setText("");
+        jrEstado.setSelected(false);
+    }                                      
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLRotulo;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPDatos;
     private javax.swing.JScrollPane jSTabla;
     private javax.swing.JSeparator jSeparator1;
@@ -612,13 +529,11 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbSalir;
-    private com.toedter.calendar.JDateChooser jdFechaNac;
     private javax.swing.JRadioButton jrEstado;
-    private javax.swing.JTable jtAlumnos;
-    private javax.swing.JTextField jtApellido;
-    private javax.swing.JTextField jtDocumento;
-    private javax.swing.JTextField jtFechaNacimiento;
-    private javax.swing.JTextField jtLegajo;
+    private javax.swing.JTextField jtAnioMateria;
+    private javax.swing.JTextField jtBuscar;
+    private javax.swing.JTextField jtIdMateria;
+    private javax.swing.JTable jtMaterias;
     private javax.swing.JTextField jtNombre;
     // End of variables declaration//GEN-END:variables
 }
