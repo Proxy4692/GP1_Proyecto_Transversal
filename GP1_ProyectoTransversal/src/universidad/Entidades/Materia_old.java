@@ -1,26 +1,26 @@
 package universidad.Entidades;
 
-public class Materia {
+public class Materia_old {
     
     private int idMateria;
     private String nombre;
     private int anioMateria;
-    boolean estado;
+    boolean activo;
 
-    public Materia() {
+    public Materia_old() {
     }
 
-    public Materia(String nombre, int anioMateria, boolean estado) {
-        this.nombre = nombre;
-        this.anioMateria = anioMateria;
-        this.estado = estado;
-    }
-
-    public Materia(int idMateria, String nombre, int anioMateria, boolean estado) {
+    public Materia_old(int idMateria, String nombre, int anioMateria, boolean activo) {
         this.idMateria = idMateria;
         this.nombre = nombre;
         this.anioMateria = anioMateria;
-        this.estado = estado;
+        this.activo = activo;
+    }
+
+    public Materia_old(String nombre, int anioMateria, boolean activo) {
+        this.nombre = nombre;
+        this.anioMateria = anioMateria;
+        this.activo = activo;
     }
 
     public int getIdMateria() {
@@ -47,17 +47,23 @@ public class Materia {
         this.anioMateria = anioMateria;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public boolean isActivo() {
+        return activo;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
+    
+    
 
+    
     @Override
     public String toString() {
-        return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", anioMateria=" + anioMateria + ", estado=" + estado + '}';
+        return  nombre + " (Año: " + anioMateria+ ")";
     }
-  
+
+    public void add(Materia_old materia) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

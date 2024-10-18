@@ -1,16 +1,13 @@
 package universidad.Entidades;
 
-public class Inscripcion{
-    public int idInscripcion;
+public class Inscripcion {
+    
+    public int idInscripto;
     public Alumno alumno;
     public Materia materia;
     public double nota;
 
-    public Inscripcion(int idInscripcion, Alumno alumno, Materia materia, double nota) {
-        this.idInscripcion = idInscripcion;
-        this.alumno = alumno;
-        this.materia = materia;
-        this.nota = nota;
+    public Inscripcion() {
     }
 
     public Inscripcion(Alumno alumno, Materia materia, double nota) {
@@ -19,19 +16,19 @@ public class Inscripcion{
         this.nota = nota;
     }
 
-    public Inscripcion() {
-    }
-
-    public Inscripcion(double nota) {
+    public Inscripcion(int idInscripto, Alumno alumno, Materia materia, double nota) {
+        this.idInscripto = idInscripto;
+        this.alumno = alumno;
+        this.materia = materia;
         this.nota = nota;
     }
 
-    public int getIdInscripcion() {
-        return idInscripcion;
+    public int getIdInscripto() {
+        return idInscripto;
     }
 
-    public void setIdInscripcion(int idInscripcion) {
-        this.idInscripcion = idInscripcion;
+    public void setIdInscripto(int idInscripto) {
+        this.idInscripto = idInscripto;
     }
 
     public Alumno getAlumno() {
@@ -56,6 +53,12 @@ public class Inscripcion{
 
     public void setNota(double nota) {
         this.nota = nota;
+    }
+
+    @Override
+    public String toString() {
+        String insc= idInscripto + " " + alumno.getApellido() + ", " + alumno.getNombre()+ " " +materia + ", nota=" + nota + '}';
+        return insc;
     }
     
 }
