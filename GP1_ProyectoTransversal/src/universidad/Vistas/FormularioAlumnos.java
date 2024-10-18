@@ -5,18 +5,18 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import universidad.AccesoADatos.AlumnoData_old;
-import universidad.Entidades.Alumno_old;
+import universidad.AccesoADatos.AlumnoData;
+import universidad.Entidades.Alumno;
 
 public class FormularioAlumnos extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo= new DefaultTableModel();
-    private AlumnoData_old aluData=new AlumnoData_old(); //Paso 1: Inicializo alumno data y un actual inicializada con el boton Buscar
-    private Alumno_old alumnoActual=null;
+    private AlumnoData aluData=new AlumnoData(); //Paso 1: Inicializo alumno data y un actual inicializada con el boton Buscar
+    private Alumno alumnoActual=null;
     
     public FormularioAlumnos() {
         initComponents();
         armarCabecera(); 
-        for (Alumno_old alumno : aluData.listarAlumnos()) {
+        for (Alumno alumno : aluData.listarAlumnos()) {
             cargarDatos(alumno);           
         }      
     }
@@ -416,8 +416,8 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
             
             //Paso 5 : Corroboro si es alumno nuevo o modificar alumno
             if(alumnoActual==null){
-                alumnoActual=new Alumno_old(dni, apellido, nombre, fechaNac, estado);
-                Alumno_old alumnoBuscar=aluData.buscarAlumnoPorDni(dni);
+                alumnoActual=new Alumno(dni, apellido, nombre, fechaNac, estado);
+                Alumno alumnoBuscar=aluData.buscarAlumnoPorDni(dni);
                 if(alumnoBuscar.getDni()==dni){
                     JOptionPane.showMessageDialog(this,"El DNI ingresado pertenece a otro alumno guardado anteriormente");
                     alumnoActual=null;
@@ -566,7 +566,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
         jtAlumnos.setModel(modelo);
     }
 
-    private void cargarDatos(Alumno_old alumno){     
+    private void cargarDatos(Alumno alumno){     
         modelo.addRow(new Object[]{alumno.getIdAlumno(), alumno.getApellido(), alumno.getNombre(),alumno.getDni(),alumno.getFechaNacimiento()}); 
 
     }
