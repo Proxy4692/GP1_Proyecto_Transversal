@@ -16,9 +16,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
     public FormularioAlumnos() {
         initComponents();
         armarCabecera(); 
-        for (Alumno alumno : aluData.listarAlumnos()) {
-            cargarDatos(alumno);           
-        }      
+        cargarDatos();            
     }
 
     @SuppressWarnings("unchecked")
@@ -356,9 +354,9 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
                         .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53)
+                        .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
                         .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -432,7 +430,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
                 alumnoActual.setFechaNacimiento(fechaNac);
                 aluData.modificarAlumno(alumnoActual);
             }
-
+            cargarDatos();
         }catch(NumberFormatException nf){
             JOptionPane.showMessageDialog(this,"El DNI debe ser un número entero");
         }
@@ -449,6 +447,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         // TODO add your handling code here:
+        jtAlumnos.enable(true);
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
@@ -466,6 +465,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
             aluData.eliminarAlumno(alumnoActual.getIdAlumno());
             alumnoActual=null;
             limpiarCampos();
+            cargarDatos();
         }else{
             JOptionPane.showMessageDialog(this,"No hay un alumno seleccionado para eliminar");            
         }
@@ -492,6 +492,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
             java.util.Date date= java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
             jdFechaNac.setDate(date);
         }
+        jtAlumnos.enable(true);
     }catch(NumberFormatException ex){
         JOptionPane.showMessageDialog(this,"Debe ingresar un DNI válido");
         jtDocumento.requestFocus();
@@ -537,6 +538,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
                 jtNombre.setText(alumnoActual.getNombre());
                 jrEstado.setSelected(alumnoActual.isEstado());
                 jtLegajo.setText(""+alumnoActual.getIdAlumno());
+                jtDocumento.setText(""+alumnoActual.getDni());
                 LocalDate lc= alumnoActual.getFechaNacimiento();
                 java.util.Date date= java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
                 jdFechaNac.setDate(date);                  
@@ -566,9 +568,15 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
         jtAlumnos.setModel(modelo);
     }
 
-    private void cargarDatos(Alumno alumno){     
-        modelo.addRow(new Object[]{alumno.getIdAlumno(), alumno.getApellido(), alumno.getNombre(),alumno.getDni(),alumno.getFechaNacimiento()}); 
-
+    private void cargarDatos(){
+        int filas=jtAlumnos.getRowCount()-1;
+        for(int f=filas;f>=0;f--){
+            modelo.removeRow(f);
+        }
+        for (Alumno alumno : aluData.listarAlumnos()) {
+            modelo.addRow(new Object[]{alumno.getIdAlumno(), alumno.getApellido(), alumno.getNombre(),alumno.getDni(),alumno.getFechaNacimiento()});          
+        }
+        jtAlumnos.enable(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
