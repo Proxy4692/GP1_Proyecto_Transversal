@@ -260,7 +260,8 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
             Materia mat=new Materia(idMat,nombreMat,anioMat,true);
             Inscripcion insc=new Inscripcion(alu,mat,0);
             inscData.guardarInscripcion(insc);
-            borrarDatos();           
+            borrarDatos();
+            cargaDatosNoInscriptas();
         }   
         
     }//GEN-LAST:event_jbInscribirActionPerformed
@@ -278,7 +279,8 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
             Alumno alu=(Alumno)jcAlumno.getSelectedItem();
             int idMat= (Integer)jtMaterias.getValueAt(filaElegida, 0);
             inscData.borrarInscripcionAlumnoMateria(alu.getIdAlumno(), idMat);
-            borrarDatos();           
+            borrarDatos();  
+            cargaDatosInscriptas();
         }   
     }//GEN-LAST:event_jbAnularActionPerformed
 
