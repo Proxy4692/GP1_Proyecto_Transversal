@@ -195,9 +195,9 @@
           <Font name="Dubai" size="14" style="0"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/universidad/recursos/guardar30.gif"/>
+          <Image iconType="3" name="/universidad/recursos/inscribir30.gif"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Guardar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Inscribir"/>
         <Property name="enabled" type="boolean" value="false"/>
         <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
           <Insets value="[2, 7, 2, 7]"/>
@@ -256,9 +256,9 @@
           <Font name="Dubai" size="14" style="0"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/universidad/recursos/eliminar30.gif"/>
+          <Image iconType="3" name="/universidad/recursos/anular30.gif"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Eliminar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Anular Inscripci&#xf3;n"/>
         <Property name="enabled" type="boolean" value="false"/>
         <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
           <Insets value="[2, 7, 2, 7]"/>

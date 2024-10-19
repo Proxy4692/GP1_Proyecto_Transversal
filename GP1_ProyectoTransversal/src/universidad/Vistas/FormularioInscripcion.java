@@ -88,8 +88,8 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
         jbInscribir.setBackground(new java.awt.Color(102, 102, 0));
         jbInscribir.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
-        jbInscribir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/recursos/guardar30.gif"))); // NOI18N
-        jbInscribir.setToolTipText("Guardar");
+        jbInscribir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/recursos/inscribir30.gif"))); // NOI18N
+        jbInscribir.setToolTipText("Inscribir");
         jbInscribir.setEnabled(false);
         jbInscribir.setMargin(new java.awt.Insets(2, 7, 2, 7));
         jbInscribir.setMaximumSize(new java.awt.Dimension(81, 24));
@@ -119,8 +119,8 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
         jbAnular.setBackground(new java.awt.Color(102, 102, 0));
         jbAnular.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
-        jbAnular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/recursos/eliminar30.gif"))); // NOI18N
-        jbAnular.setToolTipText("Eliminar");
+        jbAnular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/recursos/anular30.gif"))); // NOI18N
+        jbAnular.setToolTipText("Anular Inscripción");
         jbAnular.setEnabled(false);
         jbAnular.setMargin(new java.awt.Insets(2, 7, 2, 7));
         jbAnular.setMaximumSize(new java.awt.Dimension(81, 24));
