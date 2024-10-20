@@ -417,6 +417,7 @@ public class FormularioMaterias extends javax.swing.JInternalFrame {
         // Paso 6: 
         if(materiaActual!=null){
             matData.eliminarMateria(materiaActual.getIdMateria());
+            System.out.println(materiaActual.getIdMateria());
             materiaActual=null;
             limpiarCampos();
             cargarDatos();

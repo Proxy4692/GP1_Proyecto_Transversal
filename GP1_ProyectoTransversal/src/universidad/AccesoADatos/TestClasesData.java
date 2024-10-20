@@ -130,15 +130,22 @@ public class TestClasesData {
             System.out.println(materia.toString());          
         }
         System.out.println(".........................ELIMINAR MATERIA - OK");
+
         //RECUPERAR MATERIAS ELIMINADAS        
-        mat.guardarMateria(mat1);
-        mat.guardarMateria(mat2);
-        mat.guardarMateria(mat3);
-        mat.guardarMateria(mat4);
-        mat.guardarMateria(mat5);
+        mat1.setEstado(true);
+        mat2.setEstado(true);
+        mat3.setEstado(true);
+        mat4.setEstado(true);
+        mat5.setEstado(true);
+        mat.modificarMateria(mat1);
+        mat.modificarMateria(mat2);
+        mat.modificarMateria(mat3);
+        mat.modificarMateria(mat4);
+        mat.modificarMateria(mat5);
         System.out.println(".........................RECUPERAR MATERIAS ELIMINADAS - OK");        
         System.out.println();
         System.out.println();        
+
         //Testeo de metodos de clase AlumnoData
         InscripcionData id=new InscripcionData();
         System.out.println(".........................INSCRIPCIONDATA..........................");

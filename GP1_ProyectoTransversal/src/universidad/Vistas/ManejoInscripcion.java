@@ -10,7 +10,7 @@ import universidad.Entidades.Alumno;
 import universidad.Entidades.Inscripcion;
 import universidad.Entidades.Materia;
 
-public class FormularioInscripcion extends javax.swing.JInternalFrame {
+public class ManejoInscripcion extends javax.swing.JInternalFrame {
     
     private DefaultTableModel modelo= new DefaultTableModel(); //Paso 1: Inicializo variables
     private AlumnoData aluData=new AlumnoData(); 
@@ -19,7 +19,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
     private ArrayList<Materia> listaM;
     private ArrayList<Alumno> listaA=(ArrayList)aluData.listarAlumnos();
     
-    public FormularioInscripcion() {
+    public ManejoInscripcion() {
        initComponents();
        cargarAlumnos();  //Paso 2: Cargar check box de ALumnos - jc alumnos es de clase Alumnos
        armarCabecera(); //Paso 3: Cargar tabla Materias

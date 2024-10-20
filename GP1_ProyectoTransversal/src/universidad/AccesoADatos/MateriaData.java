@@ -65,7 +65,7 @@ public class MateriaData {
     }
     
         public void eliminarMateria(int id){
-        String sql = "DELETE FROM materia WHERE idMateria = ?";
+        String sql = "UPDATE materia SET estado = 0 WHERE idMateria = ? ";
         try{
             MateriaData md = new MateriaData();
             Materia matb = md.buscarMateria(id);
@@ -75,8 +75,8 @@ public class MateriaData {
             if(me == 1){
                 JOptionPane.showMessageDialog(null, "La materia " +matb.getNombre()
                         +" ha sido eliminada");
-            }
             ps.close();
+            }
         }catch(SQLException ex){
             System.out.println("Error al eliminar la materia: " + ex.getMessage());
         }
@@ -106,7 +106,7 @@ public class MateriaData {
         
         public List<Materia> listarMaterias(){
         List<Materia> materias = new ArrayList<>();
-        String sql = "SELECT * FROM materia";
+        String sql = "SELECT * FROM materia WHERE estado = 1;";
         try{
                 PreparedStatement ps = con.prepareStatement (sql);
                 ResultSet ml = ps.executeQuery ();

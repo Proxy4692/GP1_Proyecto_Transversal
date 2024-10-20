@@ -76,10 +76,10 @@ public class InscripcionData {
                 Materia matb = md.buscarMateria(idMateria);                               
                 JOptionPane.showMessageDialog(null, "Inscripcion del alumno "
                         +alub.getNombre()+" "+alub.getApellido()+" en la materia "
-                        +matb.getNombre()+" ha sido eliminada");
+                        +matb.getNombre()+" ha sido anulada");
             }else{
                 JOptionPane.showMessageDialog(null, "Inscripcion del alumno id "+idAlumno
-                        +" no fue eliminada");
+                        +" no fue anulada");
             }
             ps.close();
         }catch(SQLException ex){
