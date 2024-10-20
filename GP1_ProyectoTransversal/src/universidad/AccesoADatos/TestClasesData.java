@@ -12,6 +12,9 @@ public class TestClasesData {
 
     public static void main(String[] args) {
         
+        System.out.println("El siguiente test prueba todos los atributos de las clases data.");
+        System.out.println("Para evitar conflictos al agregar registros duplicados, es importante que");
+        System.out.println("previamente la base de datos universidadulp este sin ningun dato.");
         //Testeo de metodos de clase Conexion
         Connection con=Conexion.getConexion();
         //Testeo de metodos de clase AlumnoData

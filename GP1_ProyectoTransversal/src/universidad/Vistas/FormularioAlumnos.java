@@ -10,7 +10,7 @@ import universidad.Entidades.Alumno;
 
 public class FormularioAlumnos extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo= new DefaultTableModel();
-    private AlumnoData aluData=new AlumnoData(); //Paso 1: Inicializo alumno data y un actual inicializada con el boton Buscar
+    private AlumnoData aluData=new AlumnoData();
     private Alumno alumnoActual=null;
     
     public FormularioAlumnos() {
@@ -397,7 +397,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
 
         try{
-            //Paso 4: Rescato los valores 
+
             if(jtDocumento.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this,"Complete DNI del alumno para poder guardar");
                 return;
@@ -417,7 +417,6 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
             LocalDate fechaNac=sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             Boolean estado=jrEstado.isSelected();
             
-            //Paso 5 : Corroboro si es alumno nuevo o modificar alumno
             if(alumnoActual==null){
                 alumnoActual=new Alumno(dni, apellido, nombre, fechaNac, estado);
                 Alumno alumnoBuscar=aluData.buscarAlumnoPorDni(dni);
@@ -444,28 +443,28 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
 
-        limpiarCampos(); // Paso 3
+        limpiarCampos(); 
         alumnoActual=null;
         jtAlumnos.enable(true);
         
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-        // TODO add your handling code here:
+
         jtAlumnos.enable(true);
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jtLegajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtLegajoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jtLegajoActionPerformed
 
     private void jtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jtNombreActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        // Paso 6: 
+
         if(alumnoActual!=null){
             aluData.eliminarAlumno(alumnoActual.getIdAlumno());
             alumnoActual=null;
@@ -477,16 +476,16 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jtDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDocumentoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jtDocumentoActionPerformed
 
     private void jtFechaNacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtFechaNacimientoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jtFechaNacimientoActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
     try{
-        Integer dni= Integer.parseInt(jtDocumento.getText());  //Paso 2: Inicializo alumno actual con DNI seleccionado
+        Integer dni= Integer.parseInt(jtDocumento.getText());  
         alumnoActual=aluData.buscarAlumnoPorDni(dni);
         if(alumnoActual!=null){
             jtApellido.setText(alumnoActual.getApellido());
@@ -526,7 +525,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
     }
         
     private void limpiarCampos(){
-    /* Paso 3: Vacía los campos para iniciar el llenado de datos*/    
+
         jtLegajo.setText("");
         jtNombre.setText("");
         jtApellido.setText("");
@@ -551,25 +550,22 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
                 LocalDate lc= alumnoActual.getFechaNacimiento();
                 java.util.Date date= java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
                 jdFechaNac.setDate(date);                  
-//            jbActualizar.setEnabled(true);
-//            jbEliminar.setEnabled(true);            
-
             }
         }
     }//GEN-LAST:event_jtAlumnosMouseClicked
 
     private void jtAlumnosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtAlumnosFocusGained
-        // TODO add your handling code here:
+
         jbBuscar.requestFocus();
         jtAlumnos.enable(false);
     }//GEN-LAST:event_jtAlumnosFocusGained
 
     private void jbBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jbBuscarFocusGained
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jbBuscarFocusGained
 
     private void jtDocumentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDocumentoKeyPressed
-        // TODO add your handling code here:
+
         jtLegajo.setText("");
         jtNombre.setText("");
         jtApellido.setText("");

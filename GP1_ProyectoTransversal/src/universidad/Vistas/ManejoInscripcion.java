@@ -1,7 +1,6 @@
 package universidad.Vistas;
 
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import universidad.AccesoADatos.AlumnoData;
 import universidad.AccesoADatos.InscripcionData;
@@ -12,7 +11,7 @@ import universidad.Entidades.Materia;
 
 public class ManejoInscripcion extends javax.swing.JInternalFrame {
     
-    private DefaultTableModel modelo= new DefaultTableModel(); //Paso 1: Inicializo variables
+    private DefaultTableModel modelo= new DefaultTableModel(); 
     private AlumnoData aluData=new AlumnoData(); 
     private MateriaData matData=new MateriaData();
     private InscripcionData inscData=new InscripcionData();
@@ -21,8 +20,8 @@ public class ManejoInscripcion extends javax.swing.JInternalFrame {
     
     public ManejoInscripcion() {
        initComponents();
-       cargarAlumnos();  //Paso 2: Cargar check box de ALumnos - jc alumnos es de clase Alumnos
-       armarCabecera(); //Paso 3: Cargar tabla Materias
+       cargarAlumnos();  
+       armarCabecera(); 
        cargarDatos();            
     }
 
@@ -250,7 +249,7 @@ public class ManejoInscripcion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
-        //Paso 6: Boton Inscribir
+
         int filaElegida=jtMaterias.getSelectedRow();
         if(filaElegida!=-1){
             Alumno alu=(Alumno)jcAlumno.getSelectedItem();
@@ -267,13 +266,13 @@ public class ManejoInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbInscribirActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-        // TODO add your handling code here:
+
         jtMaterias.enable(true);
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAnularActionPerformed
-        // Paso 6: 
+
         int filaElegida=jtMaterias.getSelectedRow();
         if(filaElegida!=-1){
             Alumno alu=(Alumno)jcAlumno.getSelectedItem();
@@ -286,37 +285,19 @@ public class ManejoInscripcion extends javax.swing.JInternalFrame {
 
     private void jtMateriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtMateriasMouseClicked
 
-//        int filaElegida=jtAlumnos.getSelectedRow();
-//        if(filaElegida!=-1){
-//            Integer dni= (Integer)jtAlumnos.getValueAt(filaElegida, 3);  
-//            alumnoActual=aluData.buscarAlumnoPorDni(dni);
-//            if(alumnoActual!=null){
-//                jtDocumento.setText("");
-//                jtApellido.setText(alumnoActual.getApellido());
-//                jtNombre.setText(alumnoActual.getNombre());
-//                jrEstado.setSelected(alumnoActual.isEstado());
-//                jtLegajo.setText(""+alumnoActual.getIdAlumno());
-//                jtDocumento.setText(""+alumnoActual.getDni());
-//                LocalDate lc= alumnoActual.getFechaNacimiento();
-//                java.util.Date date= java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
-//                jdFechaNac.setDate(date);                  
-//       
-//
-//            }
-//        }
     }//GEN-LAST:event_jtMateriasMouseClicked
 
     private void jtMateriasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtMateriasFocusGained
-        // TODO add your handling code here:
+
         jtMaterias.enable(false);
     }//GEN-LAST:event_jtMateriasFocusGained
 
     private void jcAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcAlumnoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jcAlumnoActionPerformed
 
     private void jrMatInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrMatInscActionPerformed
-        // TODO add your handling code here:
+
         jrMatNoInsc.setSelected(false);
         cargaDatosInscriptas();
         jbInscribir.setEnabled(false);
@@ -325,7 +306,7 @@ public class ManejoInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jrMatInscActionPerformed
 
     private void jrMatNoInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrMatNoInscActionPerformed
-        // TODO add your handling code here:
+
         jrMatInsc.setSelected(false);
         cargaDatosNoInscriptas();
         jbInscribir.setEnabled(true);
@@ -359,7 +340,7 @@ public class ManejoInscripcion extends javax.swing.JInternalFrame {
         jtMaterias.enable(true);
     }
     
-    private void cargaDatosNoInscriptas(){ //Paso 5: Cargar tabla Materias No Iscriptas
+    private void cargaDatosNoInscriptas(){ 
         borrarDatos();
         Alumno selec=(Alumno)jcAlumno.getSelectedItem();
         listaM=(ArrayList)inscData.obtenerMateriasNoCursadasPorAlumno(selec.getIdAlumno());
@@ -369,7 +350,7 @@ public class ManejoInscripcion extends javax.swing.JInternalFrame {
         jtMaterias.enable(true);
     }
     
-    private void cargaDatosInscriptas(){  //Paso 4: Cargar tabla Materias Iscriptas
+    private void cargaDatosInscriptas(){  
         borrarDatos();
         Alumno selec=(Alumno)jcAlumno.getSelectedItem();
         listaM=(ArrayList)inscData.obtenerMateriasCursadasPorAlumno(selec.getIdAlumno());

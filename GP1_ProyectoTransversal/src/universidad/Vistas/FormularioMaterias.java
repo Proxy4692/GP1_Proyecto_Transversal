@@ -1,8 +1,5 @@
 package universidad.Vistas;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import universidad.AccesoADatos.MateriaData;
@@ -10,7 +7,7 @@ import universidad.Entidades.Materia;
 
 public class FormularioMaterias extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo= new DefaultTableModel();
-    private MateriaData matData=new MateriaData(); //Paso 1: Inicializo alumno data y un actual inicializada con el boton Buscar
+    private MateriaData matData=new MateriaData(); 
     private Materia materiaActual=null;
     
     public FormularioMaterias() {
@@ -365,7 +362,7 @@ public class FormularioMaterias extends javax.swing.JInternalFrame {
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
 
         try{
-            //Paso 4: Rescato los valores 
+            
             int anioMateria= Integer.parseInt(jtAnioMateria.getText());
             if(jtNombre.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this,"Complete nombre de materia para poder guardar");
@@ -374,7 +371,7 @@ public class FormularioMaterias extends javax.swing.JInternalFrame {
             String nombre= jtNombre.getText();
             Boolean estado=jrEstado.isSelected();
             
-            //Paso 5 : Corroboro si es alumno nuevo o modificar alumno
+
             if(materiaActual==null){
                 materiaActual=new Materia(nombre, anioMateria, estado);
                 matData.guardarMateria(materiaActual);
@@ -393,28 +390,28 @@ public class FormularioMaterias extends javax.swing.JInternalFrame {
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
 
-        limpiarCampos(); // Paso 3
+        limpiarCampos(); 
         materiaActual=null;
         jtMaterias.enable(true);
         
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-        // TODO add your handling code here:
+
         jtMaterias.enable(true);
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jtIdMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtIdMateriaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jtIdMateriaActionPerformed
 
     private void jtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jtNombreActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        // Paso 6: 
+
         if(materiaActual!=null){
             matData.eliminarMateria(materiaActual.getIdMateria());
             System.out.println(materiaActual.getIdMateria());
@@ -427,12 +424,12 @@ public class FormularioMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jtAnioMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtAnioMateriaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jtAnioMateriaActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
     try{
-        Integer idb= Integer.parseInt(jtBuscar.getText());  //Paso 2: Inicializo alumno actual con ID seleccionado
+        Integer idb= Integer.parseInt(jtBuscar.getText());  
         materiaActual=matData.buscarMateria(idb);
         if(materiaActual!=null){
             jtNombre.setText(materiaActual.getNombre());
@@ -468,21 +465,21 @@ public class FormularioMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtMateriasMouseClicked
 
     private void jtMateriasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtMateriasFocusGained
-        // TODO add your handling code here:
+
         jbBuscar.requestFocus();
         jtMaterias.enable(false);
     }//GEN-LAST:event_jtMateriasFocusGained
 
     private void jbBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jbBuscarFocusGained
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jbBuscarFocusGained
 
     private void jtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtBuscarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jtBuscarActionPerformed
 
     private void jtBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBuscarKeyPressed
-        // TODO add your handling code here:
+
         jtIdMateria.setText("");
         jtNombre.setText("");
         jtAnioMateria.setText("");
@@ -509,7 +506,7 @@ public class FormularioMaterias extends javax.swing.JInternalFrame {
     }
 
     private void limpiarCampos(){
-    /* Paso 3: Vacía los campos para iniciar el llenado de datos*/    
+  
         jtIdMateria.setText("");
         jtNombre.setText("");
         jtAnioMateria.setText("");
