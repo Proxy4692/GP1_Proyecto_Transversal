@@ -56,7 +56,7 @@ public class ManejoInscripcion extends javax.swing.JInternalFrame {
 
         jtMaterias.setBackground(new java.awt.Color(102, 102, 0));
         jtMaterias.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
-        jtMaterias.setForeground(new java.awt.Color(0, 153, 153));
+        jtMaterias.setForeground(new java.awt.Color(255, 255, 255));
         jtMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

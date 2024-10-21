@@ -180,6 +180,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MenuCon1.setBackground(new java.awt.Color(0, 102, 153));
         MenuCon1.setFont(new java.awt.Font("Dubai", 0, 11)); // NOI18N
         MenuCon1.setText("Alumnos por materia");
+        MenuCon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCon1ActionPerformed(evt);
+            }
+        });
         jmConsultas.add(MenuCon1);
 
         jMenuBar1.add(jmConsultas);
@@ -272,6 +277,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_jmSalirMenuSelected
+
+    private void MenuCon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCon1ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        AlumnosPorMateria fi=new AlumnosPorMateria();
+        fi.setVisible(true);
+        escritorio.add(fi);
+        escritorio.moveToFront(fi);
+    }//GEN-LAST:event_MenuCon1ActionPerformed
 
     /**
      * @param args the command line arguments

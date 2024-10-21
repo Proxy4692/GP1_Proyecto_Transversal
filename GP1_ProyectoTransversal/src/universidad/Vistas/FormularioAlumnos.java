@@ -137,6 +137,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("DNI:");
 
+        jtFechaNacimiento.setEditable(false);
         jtFechaNacimiento.setBackground(new java.awt.Color(255, 204, 255));
         jtFechaNacimiento.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
         jtFechaNacimiento.setForeground(new java.awt.Color(102, 0, 204));
@@ -419,12 +420,6 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
             
             if(alumnoActual==null){
                 alumnoActual=new Alumno(dni, apellido, nombre, fechaNac, estado);
-                Alumno alumnoBuscar=aluData.buscarAlumnoPorDni(dni);
-                if(alumnoBuscar.getDni()==dni){
-                    JOptionPane.showMessageDialog(this,"El DNI ingresado pertenece a otro alumno guardado anteriormente");
-                    alumnoActual=null;
-                    return;
-                }
                 aluData.guardarAlumno(alumnoActual);
             }else{
                 
@@ -549,7 +544,8 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
                 jtDocumento.setText(""+alumnoActual.getDni());
                 LocalDate lc= alumnoActual.getFechaNacimiento();
                 java.util.Date date= java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
-                jdFechaNac.setDate(date);                  
+                jdFechaNac.setDate(date); 
+                JOptionPane.showMessageDialog(this,"Alumno cargado. Para cambiar la seleccion, debe hacer clic en boton Nuevo, Eliminar, Guardar o Buscar");
             }
         }
     }//GEN-LAST:event_jtAlumnosMouseClicked
@@ -565,7 +561,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbBuscarFocusGained
 
     private void jtDocumentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDocumentoKeyPressed
-
+        alumnoActual=null;
         jtLegajo.setText("");
         jtNombre.setText("");
         jtApellido.setText("");
