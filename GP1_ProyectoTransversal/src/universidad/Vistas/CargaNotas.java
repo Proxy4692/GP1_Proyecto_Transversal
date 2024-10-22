@@ -10,7 +10,14 @@ import universidad.Entidades.Inscripcion;
 
 public class CargaNotas extends javax.swing.JInternalFrame {
     
-    private DefaultTableModel modelo= new DefaultTableModel();
+    private DefaultTableModel modelo= new DefaultTableModel(){
+        public boolean isCellEditable(int fila, int columna){
+            if(columna==2){
+                return true;
+            }
+            return false;
+        }
+    };
     private AlumnoData aluData=new AlumnoData(); 
     private InscripcionData inscData=new InscripcionData();
     private ArrayList<Inscripcion> listaI;
