@@ -44,7 +44,7 @@ public class AlumnosPorMateria extends javax.swing.JInternalFrame {
         jLRotulo.setFont(new java.awt.Font("Dubai", 1, 14)); // NOI18N
         jLRotulo.setForeground(new java.awt.Color(0, 153, 153));
         jLRotulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLRotulo.setText("Listado de Materias");
+        jLRotulo.setText("Listado de Alumnos");
         jLRotulo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jSTabla.setBackground(new java.awt.Color(0, 47, 78));
